@@ -1,4 +1,4 @@
-EXE = dk
+EXE = dfa
 CC = gcc
 OBJDIR = obj
 SRC = $(wildcard *.c)
