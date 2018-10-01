@@ -3,7 +3,7 @@
  * Takes two file names, reads each line expecting it to contain a valid regex
  * in postfix notation. Will contain a function called "nextRegex" which will
  * read from the file and return a line presumed to be a regex. If it is an
- * empty file or the next line is empty, it returns a null pointer.
+ * empty file or the next line is empty, it returns negative one.
  *
 */
 
