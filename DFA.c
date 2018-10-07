@@ -124,9 +124,11 @@ void DFAFreeR(DFA** head, intArray** visitedStates){
             DFAFreeR(&((*head)->transitions->array[i]->state),visitedStates);
         }
     }
-    transitionArrayFree(&((*head)->transitions));
-    free(*head);
-    *head = NULL;
+    if(*head != NULL){
+        transitionArrayFree(&((*head)->transitions));
+        free(*head);
+        *head = NULL;
+    }
 }
 
 
@@ -134,7 +136,7 @@ void DFAFree(DFA** head){
     intArray* arr = NULL;
     DFAFreeR(head,&arr);
     intArrayFree(&arr);
-    head = NULL;
+    *head = NULL;
 }
 
 int intLength(int i){

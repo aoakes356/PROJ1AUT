@@ -41,6 +41,9 @@ int main(int argc, char** argv){
                         p1 = DFAPop(st);
                         p2 = DFAPop(st);
                         DFAArrayAdd(st,DFAAnd(p1,p2));
+                    }else{
+                        printf("Malformed Regex, program will now exit.\n");
+                        return 0;
                     }
                 }
             } 
