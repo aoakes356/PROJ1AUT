@@ -21,4 +21,6 @@ int isMember(char);
 int isRegex(char* reg, int);
 
 int isAlphabet(char c);
+
+int isOp(char c); 
 #endif
