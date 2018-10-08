@@ -118,6 +118,11 @@ void DFAFreeR(DFA** head, intArray** visitedStates){
     if((*visitedStates) == NULL){
         (*visitedStates) = intArrayInit(10);
     }
+    printf("State: %i  ",(*head)->state);
+    for(int i = 0; i < (*visitedStates)->used; i++){
+        printf("%i, ",(*visitedStates)->array[i]);
+    }
+    printf("\n");
     intArrayAdd((*visitedStates),(*head)->state);
     for(int i = 0; i < (*head)->transitions->used; i++){
         if(!intIn(*visitedStates,(*head)->transitions->array[i]->state->state)){

@@ -23,6 +23,7 @@ int main(int argc, char** argv){
     DFA* p1,*p2;
     DFAArray* st = DFAArrayInit(10); 
     DFA* Final = NULL;
+    int skip = 0;
     while(res != -1 ){
         res = nextRegex(reg,max);
         if(res != -1){
@@ -34,16 +35,16 @@ int main(int argc, char** argv){
                         p1 = DFAPop(st);
                         DFAArrayAdd(st,DFAStar(p1));
                     }else if(c == '|'){
-                        p1 = DFAPop(st);
                         p2 = DFAPop(st);
+                        p1 = DFAPop(st);
                         DFAArrayAdd(st,DFAOr(p1,p2));
                     }else if(c == '&'){
-                        p1 = DFAPop(st);
                         p2 = DFAPop(st);
+                        p1 = DFAPop(st);
                         DFAArrayAdd(st,DFAAnd(p1,p2));
                     }else{
-                        printf("Malformed Regex, program will now exit.\n");
-                        return 0;
+                        printf("Malformed Regex, exiting.\n");
+                        return 0; 
                     }
                 }
             } 
