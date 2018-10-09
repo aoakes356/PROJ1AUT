@@ -124,8 +124,10 @@ void DFAFreeR(DFA** head, intArray** visitedStates){
     }
     printf("\n");
     intArrayAdd((*visitedStates),(*head)->state);
+    printf("Used: %i \n",(*head)->transitions->used);
     for(int i = 0; i < (*head)->transitions->used; i++){
         if(!intIn(*visitedStates,(*head)->transitions->array[i]->state->state)){
+            printf("Going to %p \n",(*head)->transitions->array[i]->state);
             DFAFreeR(&((*head)->transitions->array[i]->state),visitedStates);
         }
     }

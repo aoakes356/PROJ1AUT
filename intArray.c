@@ -39,4 +39,5 @@ void clearArray(intArray* arr){
 void intArrayFree(intArray** arr){
     free((*arr)->array);
     free(*arr);
+    *arr = NULL;
 }
