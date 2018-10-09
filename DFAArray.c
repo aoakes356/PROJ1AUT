@@ -37,6 +37,15 @@ void DFAArrayFree(DFAArray** arr){  // Not responsible for freeing DFA's
     *arr = NULL;
 }
 
+int DFAIn(DFAArray* arr, DFA* dfa){
+    for(int i = 0; i < arr->used; i++){
+        if(arr->array[i] == dfa){
+            return 1;
+        }
+    }
+    return 0;
+}
+
 void clearDFAArray(DFAArray* arr){
     arr->used = 0;
 }

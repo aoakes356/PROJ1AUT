@@ -85,7 +85,7 @@ void clearArray(intArray* arr);
 
 DFAArray* DFAArrayInit(int size);
 void DFAArrayAdd(DFAArray* arr, DFA* t);
-int DFAIn(DFAArray* arr, int t);
+int DFAIn(DFAArray* arr, DFA* dfa);
 void DFAArrayFree(DFAArray** arr);
 void clearDFAArray(DFAArray* arr);
 DFA* DFAPop(DFAArray* arr);

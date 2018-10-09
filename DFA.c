@@ -114,20 +114,20 @@ DFA* DFAGen(char c){    // Returns a DFA/NFA that accepts the given character.
 
 }
 
-void DFAFreeR(DFA** head, intArray** visitedStates){
+void DFAFreeR(DFA** head, DFAArray** visitedStates){
     if((*visitedStates) == NULL){
-        (*visitedStates) = intArrayInit(10);
+        (*visitedStates) = DFAArrayInit(10);
     }
-    printf("State: %i  ",(*head)->state);
+    /*printf("State: %i  ",(*head)->state);
     for(int i = 0; i < (*visitedStates)->used; i++){
         printf("%i, ",(*visitedStates)->array[i]);
     }
-    printf("\n");
-    intArrayAdd((*visitedStates),(*head)->state);
-    printf("Used: %i \n",(*head)->transitions->used);
+    printf("\n");*/
+    DFAArrayAdd((*visitedStates),(*head));
+    //printf("Used: %i \n",(*head)->transitions->used);
     for(int i = 0; i < (*head)->transitions->used; i++){
-        if(!intIn(*visitedStates,(*head)->transitions->array[i]->state->state)){
-            printf("Going to %p \n",(*head)->transitions->array[i]->state);
+        if(!DFAIn(*visitedStates,(*head)->transitions->array[i]->state)){
+            //printf("Going to %p \n",(*head)->transitions->array[i]->state);
             DFAFreeR(&((*head)->transitions->array[i]->state),visitedStates);
         }
     }
@@ -140,9 +140,9 @@ void DFAFreeR(DFA** head, intArray** visitedStates){
 
 
 void DFAFree(DFA** head){
-    intArray* arr = NULL;
+    DFAArray* arr = NULL;
     DFAFreeR(head,&arr);
-    intArrayFree(&arr);
+    DFAArrayFree(&arr);
     *head = NULL;
 }
 
@@ -187,7 +187,7 @@ void printDFAR(DFA* head, intArray** visitedStates){
         printf("|");
         printf("%i",head->state);
         for(int i = 0; i < length; i++){
-            printf("-");
+            printf("F");
         }
         printf("|");
     }
