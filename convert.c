@@ -55,7 +55,7 @@ int main(int argc, char** argv){
         }
         // Make sure the stack ptr is set to 0 each time.
         if(st->used > 0){
-            printf("Malformed Regex, resulting table may be invalid.")
+            printf("Malformed Regex, resulting table may be invalid.");
             clearDFAArray(st);
         } 
     }

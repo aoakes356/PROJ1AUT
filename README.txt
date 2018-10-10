@@ -19,7 +19,13 @@ To get rid of the current object files, type 'make clean'.
 USAGE INSTRUCTIONS -----------------------------------------------------------
 
 To run the program, first follow the above build instructions, then type
-'./dfa <path to regex file>'. By default it will use regex.txt. 
+'./dfa <path to regex file>'. By default it will use regex.txt.
+
+<IMPORTANT TO READ THIS>
+
+This will print out a transition table for each regex present in the file. The
+final states will be labeled with a series of Fs. the start state will always 
+be the top state in the table.  
 
 FILES ------------------------------------------------------------------------
 

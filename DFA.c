@@ -9,16 +9,16 @@
 #include <stdio.h>
 #include <math.h>
 
-DFA* DFAinit(int state, int isFinal){
+DFA* DFAinit(int state, int isFinal){       // Initialize a new DFA data structure (really an NFA, but oh well.)
     DFA* d = (DFA*)malloc(sizeof(DFA));
-    d->transitions = transitionArrayInit(10);
+    d->transitions = transitionArrayInit(10);   // Each NFA needs a transition array.
     d->state = state;
     d->isFinal = isFinal;
     return d;
 }
 
-void incrementStates(DFA* head, int amount, intArray** visitedStates){
-    if((*visitedStates) == NULL){
+void incrementStates(DFA* head, int amount, intArray** visitedStates){ // Increments all the state values in the NFA by the given value.
+    if((*visitedStates) == NULL){                                      // This ensure that all DFA's will have unique names
         (*visitedStates) = intArrayInit(10);
     }
     DFA* current = head;
