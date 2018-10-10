@@ -4,8 +4,8 @@ A C program that reads a text file which has one or more regular expressions
 in postfix notation, converts them into a NFA, and displays it on the screen
 in the form of a transition table.
 
-By Andrew Oakes
-
+By: Andrew Oakes
+Email: andrew.oakes@wsu.edu 
 
 BUILD INSTRUCTIONS -----------------------------------------------------------
 
