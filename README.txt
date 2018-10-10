@@ -32,10 +32,10 @@ that holds DFA pointers.
 intArray.c - Contains various functions pertaining too an expandable array 
 that holds integers.
 
-parse.c - Contains functions for checking if a charcter is an operator or a
+parse.c - Contains functions for checking if a character is an operator or a
 member of the alphabet.
 
-regex.txt - Contains the regular expressions to processed.
+regex.txt - Contains the regular expressions to be processed.
 
 dataStructures.h - Defines all of the structs used for each data structure as
 well as the function prototypes for all the functions that are needed in order
