@@ -1,10 +1,7 @@
 /* FUNCTIONALITY
  *
- * Takes a string, checks if it is made of valid characters
- * also checks if the string has a potentially functional
- * regex. Does not guarantee that is the case until it is fully
- * converted into a dfa.
- *
+ * Takes a string, checks if it is made of characters in the alphabet or
+ * an operator.
 */
 
 #include "regexToDFA.h"
