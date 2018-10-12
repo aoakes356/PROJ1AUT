@@ -9,6 +9,7 @@
 #include "regexToDFA.h"
 #include "dataStructures.h"
 #include <stdbool.h>
+#include <string.h>
 
 int main(int argc, char** argv){
     if(argc > 1){       // Takes a file name
@@ -26,6 +27,9 @@ int main(int argc, char** argv){
         res = nextRegex(reg,max);    // Get the next regex from the file.
         if(res != -1){               // Check if not end of file.
             for(int i  = 0;(c = reg[i])!= '\0'; i++){
+                if(isspace(c)){
+                    continue;
+                }
                 if(isAlphabet(c)){
                     DFAArrayAdd(st,DFAGen(c));// Create an NFA that accepts c.
                 }else if(isOp(c)){
@@ -42,8 +46,27 @@ int main(int argc, char** argv){
                         DFAArrayAdd(st,DFAAnd(p1,p2));// Add the resulting NFA to the stack.
                     }else{
                         printf("Malformed Regex, exiting.\n");
-                        return 0; 
+                        DFA* temp;
+                        while(st->used > 0){
+                            temp = DFAPop(st);
+                            DFAFree(&temp);
+                        }
+                        DFAArrayFree(&st);
+                        free(reg);
+                        closeFiles();
+                        return 0;
                     }
+                }else{
+                    printf("Malformed Regex, exiting \n");
+                    DFA* temp;
+                    while(st->used > 0){
+                        temp = DFAPop(st);
+                        DFAFree(&temp);
+                    }
+                    DFAArrayFree(&st);
+                    free(reg);
+                    closeFiles();
+                    return 0;
                 }
             } 
         // Pop the last DFA off the stack and print it out.
